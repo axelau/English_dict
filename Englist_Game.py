@@ -1,43 +1,34 @@
 import random
+import sys
 
-class color:
-   PURPLE = '\033[95m'
-   CYAN = '\033[96m'
-   DARKCYAN = '\033[36m'
-   BLUE = '\033[94m'
-   GREEN = '\033[92m'
-   YELLOW = '\033[93m'
-   RED = '\033[91m'
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
-   END = '\033[0m'
-
-#color dome
-#print(color.BLUE + 'Hello World !' + color.END)
+class Loadfile:
+	def __init__(self, file):
+		self.file = file
+		self.local = 'text/english_words_'+self.file+'.csv'
 
 list = []
 
-with open('text/english_words.csv', 'r', encoding='utf-8') as f:
-	for words in f:
-		english, chinese, fonttype , relation, relative_mean, sound, ex1, ex2= words.strip().split(',')
-		eng = [english, chinese, fonttype, relation, relative_mean, sound, ex1, ex2]
-		#print(eng[0])
-		#測試第一個值
-		#print(eng[1])
-		#測試第二個值
+print('請選擇你想練習的表:')
+ans = input()
+s = Loadfile(ans)
 
-		english_list = {}
-		english_list['english']=eng[0]
-		english_list['chinese']=eng[1]
-		english_list['fonttype']=eng[2]
-		english_list['relation']=eng[3]
-		english_list['relative_mean']=eng[4]
-		english_list['sound']=eng[5]
-		english_list["ex1"]=eng[6]
-		english_list["ex2"]=eng[7]
-		list.append(english_list)
+with open(s.local, 'r', encoding='utf-8') as f:
+		for words in f:
+			english, chinese, fonttype , relation, relative_mean, sound, ex1, ex2= words.strip().split(',')
+			eng = [english, chinese, fonttype, relation, relative_mean, sound, ex1, ex2]
 
-# ----------------
+			english_list = {}
+			english_list['english']=eng[0]
+			english_list['chinese']=eng[1]
+			english_list['fonttype']=eng[2]
+			english_list['relation']=eng[3]
+			english_list['relative_mean']=eng[4]
+			english_list['sound']=eng[5]
+			english_list["ex1"]=eng[6]
+			english_list["ex2"]=eng[7]
+			list.append(english_list)
+
+	# ----------------
 # 以下為輸入測試
 
 print('開始選擇題：')
@@ -103,7 +94,47 @@ print('可以休息一下了啦。')
 # 印出指定對應字
 #print(elist[0]['english'])
 
+# print('請選擇你想練習的表：')
+# opt = input()
+# if opt == '1':
+# 	with open('text/english_words_1.csv', 'r', encoding='utf-8') as f:
+# 		for words in f:
+# 			english, chinese, fonttype , relation, relative_mean, sound, ex1, ex2= words.strip().split(',')
+# 			eng = [english, chinese, fonttype, relation, relative_mean, sound, ex1, ex2]
+# 			#print(eng[0])
+# 			#測試第一個值
+# 			#print(eng[1])
+# 			#測試第二個值
 
+# 			english_list = {}
+# 			english_list['english']=eng[0]
+# 			english_list['chinese']=eng[1]
+# 			english_list['fonttype']=eng[2]
+# 			english_list['relation']=eng[3]
+# 			english_list['relative_mean']=eng[4]
+# 			english_list['sound']=eng[5]
+# 			english_list["ex1"]=eng[6]
+# 			english_list["ex2"]=eng[7]
+# 			list.append(english_list)
+# elif opt == '2':
+# 	with open('text/english_words_2.csv', 'r', encoding='utf-8') as f:
+# 		for words in f:
+# 			english, chinese, fonttype , relation, relative_mean, sound, ex1, ex2= words.strip().split(',')
+# 			eng = [english, chinese, fonttype, relation, relative_mean, sound, ex1, ex2]
+
+# 			english_list = {}
+# 			english_list['english']=eng[0]
+# 			english_list['chinese']=eng[1]
+# 			english_list['fonttype']=eng[2]
+# 			english_list['relation']=eng[3]
+# 			english_list['relative_mean']=eng[4]
+# 			english_list['sound']=eng[5]
+# 			english_list["ex1"]=eng[6]
+# 			english_list["ex2"]=eng[7]
+# 			list.append(english_list)
+# else:
+# 	print('沒有這個meun')
+# 	sys.exit()
 # #reference
 # while count < 15:
 # 	r = random.randint(0,len(list)-1)
